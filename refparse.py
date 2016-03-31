@@ -41,7 +41,6 @@ def condense_xml_entry(entry):
     for element in entry:
         if element.tag not in [UP+'protein',UP+'accession',UP+'name',UP+'gene',UP+'organism',UP+'proteinExistence',UP+'depth',UP+'sequence',UP+'feature',UP+'dbReference']:
             entry.remove(element)
-        elif element.get('type') != 'modified residue' and element.tag == UP+'feature': entry.remove(element)
         elif element.get('type') != 'Ensembl' and element.tag == UP+'dbReference': entry.remove(element)
         elif element.tag == UP+'organism':
             for field in element:
