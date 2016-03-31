@@ -9,6 +9,7 @@ import optparse
 import refparse
 import novelsplices
 import variantcalls
+import indel
 from lxml import etree as et
 import numpy as np
 from Bio import SeqIO
@@ -40,7 +41,7 @@ def __main__():
     parser.add_option( '-Q', '--bed_score_name', dest='bed_score_name', default="depth", help='Include in the NSJ ID line score_name:score. Default: "depth."'  )
     parser.add_option( '-R', '--reference', dest='reference', default="None", help='Genome Reference Name for NSJ ID location. Automatically pulled from genome_build header in GTF if present.'  )
     (options, args) = parser.parse_args()
-    
+
     ##INPUTS##
     #Protein FASTA
     try:
@@ -50,7 +51,7 @@ def __main__():
     except Exception, e:
         print >> sys.stderr, "failed: %s" % e
         exit(2)
-    
+
     #Reference XML/FASTA
     ensembl, uniprot = None, None
     if options.reference_xml != None:
@@ -91,7 +92,7 @@ def __main__():
         except Exception, e:
             print >> sys.stderr, "Opening outfile failed: %s" % e
             exit(3)
-            
+
     #Process gene model
     try:
         geneModelFile = os.path.abspath(options.gene_model)
@@ -106,7 +107,7 @@ def __main__():
     except Exception, e:
         print >> sys.stderr, "Parsing gene model failed: %s" % e
         exit(2)
-    
+
     #Process VCF
     try:
         snpeff_vcf = os.path.abspath(options.snpeff_vcf)
@@ -119,7 +120,7 @@ def __main__():
     except Exception, e:
         print >> sys.stderr, "VCF processing failed: %s" % e
         exit(1)
-    
+
     #Process Splice BED
     try:
         splice_bed = os.path.abspath(options.splice_bed)
@@ -137,16 +138,14 @@ def __main__():
     #Enter PTM information from uniprot into the EnsemblXML
     refparse.unify_xml(ensembl, uniprot)
 
-
-
-    #Check for missed SeqVariants in FASTA 
+    #Check for missed SeqVariants in FASTA
     try:
         count = 0
         fasta_dict = SeqIO.index()
         for entry in ensembl_root:
             for element in entry:
-                if element.tag == UP+'sequence'
-                    seq = et.tostring(element, encoding='utf8', method='text').replace('\n','').replace('\r','')
+                if element.tag == UP+'sequence':
+                    seq = et.tostring(element, encoding='utf8', method='text').replace('\n', '').replace('\r', '')
                     seq_len = len(seq)
             for key in fasta_dict:
                 fasta_len = len(fasta_dict[key].seq)
@@ -154,15 +153,15 @@ def __main__():
                 if seq_len == fasta_len:
                     fasta = indel.seq_to_num(fasta_dict[key].seq)
                     xml = indel.seq_to_num(seq)
-                    tmp = fasta-xml
-                    if (np.count_nonzero(tmp)==1):
-                        count+=1
+                    tmp = fasta - xml
+                    if (np.count_nonzero(tmp) == 1):
+                        count += 1
                         indel.append_seqvar(entry, count, tmp)
                 #insertion deletion case
-                if (np.abs(seq_len-fasta_len)==1):
+                if (np.abs(seq_len-fasta_len) == 1):
                     result = indel.main(str(fasta_dict[key].seq), seq)
                     if result != None:
-                        count+=1
+                        count += 1
                         indel.append_indel(entry, count, result, seq_len, fasta_len)
     except Exception, e:
         print >> sys.stderr, "Sequence variant check failed: %s" % e
