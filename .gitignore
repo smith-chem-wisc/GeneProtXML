@@ -1,1 +1,6 @@
 .idea/
+BedEntry.pyc
+indel.pyc
+novelsplices.pyc
+refparse.pyc
+variantcalls.pyc
