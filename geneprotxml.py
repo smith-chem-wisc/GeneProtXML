@@ -10,6 +10,8 @@ import refparse
 import novelsplices
 import variantcalls
 from lxml import etree as et
+import numpy as np
+from Bio import SeqIO
 
 HTML_NS = "http://uniprot.org/uniprot"
 XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
@@ -134,6 +136,36 @@ def __main__():
 
     #Enter PTM information from uniprot into the EnsemblXML
     refparse.unify_xml(ensembl, uniprot)
+
+
+
+    #Check for missed SeqVariants in FASTA 
+    try:
+        count = 0
+        fasta_dict = SeqIO.index()
+        for entry in ensembl_root:
+            for element in entry:
+                if element.tag == UP+'sequence'
+                    seq = et.tostring(element, encoding='utf8', method='text').replace('\n','').replace('\r','')
+                    seq_len = len(seq)
+            for key in fasta_dict:
+                fasta_len = len(fasta_dict[key].seq)
+                #single amino acid case
+                if seq_len == fasta_len:
+                    fasta = indel.seq_to_num(fasta_dict[key].seq)
+                    xml = indel.seq_to_num(seq)
+                    tmp = fasta-xml
+                    if (np.count_nonzero(tmp)==1):
+                        count+=1
+                        indel.append_seqvar(entry, count, tmp)
+                #insertion deletion case
+                if (np.abs(seq_len-fasta_len)==1):
+                    result = indel.main(str(fasta_dict[key].seq), seq)
+                    if result != None:
+                        count+=1
+                        indel.append_indel(entry, count, result, seq_len, fasta_len)
+    except Exception, e:
+        print >> sys.stderr, "Sequence variant check failed: %s" % e
 
     #Write the sample specific database to outfile
     if not options.output_fasta: ensembl.write(outFile, pretty_print=True)
