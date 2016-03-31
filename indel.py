@@ -25,20 +25,20 @@ def append_indel(entry, count, result, seq_len, fasta_len):
 
     #case where an amino acid has been deleted
     if (seq_len > fasta_len):
-        feature = et.Element(UP+"feature", type = "sequence variant", description = "Found in FASTA", id = '"'+str(count)+'"'))
+        feature = et.Element(UP+"feature", type="sequence variant", description="Found in FASTA", id='"'+str(count)+'"')
         var = et.Element(UP+"deletion")
         var.text = aa
         feature.append(var)
 
     #case where an amino acid has been added
     else:
-        feature = et.Element(UP+"feature", type = "sequence variant", description = "Found in FASTA", id = '"'+str(count)+'"'))
+        feature = et.Element(UP+"feature", type="sequence variant", description="Found in FASTA", id='"'+str(count)+'"')
         var = et.Element(UP+"insertion")
         var.text = aa
         feature.append(var)
 
     location = et.Element(UP + "location")
-    position = et.Element(UP + "position", position = '"' + pos + '"')
+    position = et.Element(UP + "position", position='"' + pos + '"')
     location.append(position)
 
     feature.append(location)
