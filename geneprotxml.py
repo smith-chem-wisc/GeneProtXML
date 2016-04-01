@@ -13,6 +13,7 @@ import indel
 from lxml import etree as et
 import numpy as np
 from Bio import SeqIO
+import threading
 
 HTML_NS = "http://uniprot.org/uniprot"
 XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
@@ -30,6 +31,7 @@ def __main__():
     parser.add_option( '-b', '--splice_bed', dest='splice_bed', help='BED file (tophat junctions.bed) with sequence column added.' )
     parser.add_option( '-o', '--output', dest='output', help='Output file path. Outputs UniProt-XML format unless --output-fasta is selected.' )
     parser.add_option( '-z', '--output_fasta', dest='output_fasta', action='store_true', default=False, help='Output a FASTA-format database. Place path for output file after the --output flag.')
+    parser.add_option( '-m', '--threads', dest='threads', type='int', default=envi)
       #Peptide sequence construction
     parser.add_option( '-l', '--leading_aa_num', dest='leading_aa_num', type='int', default=33, help='Leading number of AAs to output for SAV peptides. Default: 33.' )
     parser.add_option( '-t', '--trailing_aa_num', dest='trailing_aa_num', type='int', default=33, help='Trailing number of AAs to output for SAV peptides. Default: 33.' )
@@ -143,6 +145,7 @@ def __main__():
         count = 0
         fasta_dict = SeqIO.index()
         for entry in ensembl_root:
+            #TODO: implement this with findall?
             for element in entry:
                 if element.tag == UP+'sequence':
                     seq = et.tostring(element, encoding='utf8', method='text').replace('\n', '').replace('\r', '')
@@ -158,7 +161,7 @@ def __main__():
                         count += 1
                         indel.append_seqvar(entry, count, tmp)
                 #insertion deletion case
-                if (np.abs(seq_len-fasta_len) == 1):
+                elif (np.abs(seq_len - fasta_len) == 1):
                     result = indel.main(str(fasta_dict[key].seq), seq)
                     if result != None:
                         count += 1

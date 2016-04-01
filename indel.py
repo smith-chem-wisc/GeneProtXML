@@ -56,13 +56,13 @@ def append_seqvar(entry, count, tmp):
     variation_seq = "'" + str(fasta_dict[key].seq)[x] + "'" #TODO: declare fasta_dict or bring it in as a praramter
 
     #Create a lxml element parts
-    feature = et.Element(UP+"feature", type = "sequence variant", description = "Found in FASTA", id = '"'+str(count)+'"')
+    feature = et.Element(UP+"feature", type="sequence variant", description="Found in FASTA", id='"'+str(count)+'"')
     original = et.Element(UP+"original")
     original.text = original_seq
     variant = et.Element(UP+"variation")
     variant.text = variation_seq
     location = et.Element(UP+"location")
-    position = et.Element(UP+"position", position = '"'+str(x)+'"')
+    position = et.Element(UP+"position", position='"'+str(x)+'"')
     location.append(position)
 
     #Create the entry

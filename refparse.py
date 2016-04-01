@@ -39,7 +39,8 @@ def aa_abbrev_dict():
 
 def condense_xml_entry(entry):
     for element in entry:
-        if element.tag not in [UP+'protein',UP+'accession',UP+'name',UP+'gene',UP+'organism',UP+'proteinExistence',UP+'depth',UP+'sequence',UP+'feature',UP+'dbReference']:
+        if element.tag not in [UP+'protein', UP+'accession', UP+'name', UP+'gene', UP+'organism', UP+'proteinExistence',
+                               UP+'depth', UP+'sequence', UP+'feature', UP+'dbReference']:
             entry.remove(element)
         elif element.get('type') != 'Ensembl' and element.tag == UP+'dbReference': entry.remove(element)
         elif element.tag == UP+'organism':
@@ -49,7 +50,6 @@ def condense_xml_entry(entry):
             for name in element:
                 if name.tag != UP+'recommendedName': element.remove(name)
         else: continue
-
 
 def add_unified(root, newId, rootIndex, acc, seqtype, chromosome, biotypes, geneId, transcriptId, seq):
     if newId:
