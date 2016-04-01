@@ -122,34 +122,7 @@ def indel_location(seq1, seq2, aa):
             run == False
             return (aa,pos)
 
-def seq_to_num(seq):
-    count = 0
-    seq_as_numbers = np.zeros((1,len(str(seq))))
-    for ch in seq:
-        if ch == ('A'): seq_as_numbers[0, count]=(1)
-        elif ch == ('L'): seq_as_numbers[0, count]=(2)
-        elif ch == ('S'): seq_as_numbers[0, count]=(3)
-        elif ch == ('K'): seq_as_numbers[0, count]=(4)
-        elif ch == ('G'): seq_as_numbers[0, count]=(5)
-        elif ch == ('T'): seq_as_numbers[0, count]=(6)
-        elif ch == ('P'): seq_as_numbers[0, count]=(7)
-        elif ch == ('V'): seq_as_numbers[0, count]=(8)
-        elif ch == ('Q'): seq_as_numbers[0, count]=(9)
-        elif ch == ('R'): seq_as_numbers[0, count]=(10)
-        elif ch == ('I'): seq_as_numbers[0, count]=(11)
-        elif ch == ('C'): seq_as_numbers[0, count]=(12)
-        elif ch == ('W'): seq_as_numbers[0, count]=(13)
-        elif ch == ('N'): seq_as_numbers[0, count]=(14)
-        elif ch == ('Y'): seq_as_numbers[0, count]=(15)
-        elif ch == ('H'): seq_as_numbers[0, count]=(16)
-        elif ch == ('F'): seq_as_numbers[0, count]=(17)
-        elif ch == ('D'): seq_as_numbers[0, count]=(18)
-        elif ch == ('E'): seq_as_numbers[0, count]=(19)
-        elif ch == ('M'): seq_as_numbers[0, count]=(20)
-        else: seq_as_numbers[0, count]=(100)
-        count+=1
-    count = 0 #TODO: this seems unneccessary
-    return seq_as_numbers
+
 
 #TODO: make this method name more descriptive
 def main(str1,str2): #0 based indexing used
