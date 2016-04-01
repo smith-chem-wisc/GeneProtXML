@@ -39,9 +39,9 @@ def aa_abbrev_dict():
 
 def condense_xml_entry(entry):
     for element in entry:
-        if element.tag not in [UP+'protein',UP+'accession',UP+'name',UP+'gene',UP+'organism',UP+'proteinExistence',UP+'depth',UP+'sequence',UP+'feature',UP+'dbReference']:
+        if element.tag not in [UP+'protein', UP+'accession', UP+'name', UP+'gene', UP+'organism', UP+'proteinExistence',
+                               UP+'depth', UP+'sequence', UP+'feature', UP+'dbReference']:
             entry.remove(element)
-        elif element.get('type') != 'modified residue' and element.tag == UP+'feature': entry.remove(element)
         elif element.get('type') != 'Ensembl' and element.tag == UP+'dbReference': entry.remove(element)
         elif element.tag == UP+'organism':
             for field in element:
@@ -50,7 +50,6 @@ def condense_xml_entry(entry):
             for name in element:
                 if name.tag != UP+'recommendedName': element.remove(name)
         else: continue
-
 
 def add_unified(root, newId, rootIndex, acc, seqtype, chromosome, biotypes, geneId, transcriptId, seq):
     if newId:
@@ -110,33 +109,6 @@ def ensembl_entry(uniqSeqs, root, acc, seqtype, chromosome, biotypes, geneId, tr
         uniqSeqs.append(seq)
         add_unified(root, str(len(uniqSeqs)), -1, acc, seqtype, chromosome, biotypes, geneId, transcriptId, seq)
 
-def unify_xml(ensembl, uniprot):
-    #TODO: this might be more efficient if I got all of the nodes up front and then just got the parents...
-    ensembl_root, uniprot_root = ensembl.getroot(), uniprot.getroot()
-    uniprot_root.remove(uniprot_root.find(UP+'copyright'))
-    ensembl_seqs = [x.find(UP+'sequence').text.replace('\n','').replace('\r','') for x in ensembl_root] #lists all sequences without linebreaks
-    uniprot_seqs = [x.find(UP+'sequence').text.replace('\n','').replace('\r','') for x in uniprot_root] #lists all sequences without linebreaks
-
-    common_seqs = list(set(ensembl_seqs) & set(uniprot_seqs))
-    uniprot_only = list(set(uniprot_seqs) - set(common_seqs))
-    ensembl_only = list(set(ensembl_seqs) - set(common_seqs))
-
-    for s in common_seqs:
-        e_entry, u_entry = None, None
-        for i, t in enumerate(ensembl_seqs):
-            if s == t:
-                e_entry = ensembl_root[i]
-                break
-        for i, t in enumerate(uniprot_seqs):
-            if s == t:
-                u_entry = uniprot_root[i]
-                break
-        mods = u_entry.findall(UP+'feature')
-        seq = e_entry.find(UP+'sequence')
-        for mod in mods:
-            seq.addprevious(mod)
-    return ensembl
-
 def get_protein_fasta_seq(id, protein_fasta):
     i = 0
     for item in protein_fasta[0]:
@@ -176,7 +148,7 @@ def read_protein_fasta(protein_fasta):
                 if line == "": break
                 sequence += line
                 line = protein_fasta.readline()
-            proteinFasta[1].append(sequence.replace('\n','').replace('\r',''))
+            proteinFasta[1].append(sequence.replace('\n', '').replace('\r', ''))
             sequence = ""
     protein_fasta.close()
     return proteinFasta

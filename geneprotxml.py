@@ -9,10 +9,12 @@ import optparse
 import refparse
 import novelsplices
 import variantcalls
+import featureshare
 import indel
 from lxml import etree as et
 import numpy as np
 from Bio import SeqIO
+import threading
 
 HTML_NS = "http://uniprot.org/uniprot"
 XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
@@ -30,6 +32,7 @@ def __main__():
     parser.add_option( '-b', '--splice_bed', dest='splice_bed', help='BED file (tophat junctions.bed) with sequence column added.' )
     parser.add_option( '-o', '--output', dest='output', help='Output file path. Outputs UniProt-XML format unless --output-fasta is selected.' )
     parser.add_option( '-z', '--output_fasta', dest='output_fasta', action='store_true', default=False, help='Output a FASTA-format database. Place path for output file after the --output flag.')
+    # parser.add_option( '-m', '--threads', dest='threads', type='int', default=)
       #Peptide sequence construction
     parser.add_option( '-l', '--leading_aa_num', dest='leading_aa_num', type='int', default=33, help='Leading number of AAs to output for SAV peptides. Default: 33.' )
     parser.add_option( '-t', '--trailing_aa_num', dest='trailing_aa_num', type='int', default=33, help='Trailing number of AAs to output for SAV peptides. Default: 33.' )
@@ -69,13 +72,14 @@ def __main__():
     else:
         print >> sys.stderr, "failed: no UniProt reference protein database specified"
 
+    #Read the Ensembl fasta into an XML structure
     if options.protein_fasta != None:
         try:
             refFasta = os.path.abspath(options.protein_fasta)
             refFasta = open(refFasta, 'r')
             ensembl_root = et.Element(UP+'uniprot', nsmap=NAMESPACE_MAP)
             ensembl = et.ElementTree(ensembl_root)
-            refparse.read_fasta_to_xml(ensembl_root, refFasta)
+            refparse.read_fasta_to_xml(ensembl_root, refFasta) #TODO: singluarize the entry here
         except Exception, e:
             print >> sys.stderr, "Parsing reference fasta failed: %s" %e
             exit(2)
@@ -136,35 +140,29 @@ def __main__():
         exit(2)
 
     #Enter PTM information from uniprot into the EnsemblXML
-    refparse.unify_xml(ensembl, uniprot)
+    uniprot_root.remove(uniprot_root.find(UP+'copyright'))
+    ensembl_entries_by_seq = {entry.find(UP+'sequence').text.replace('\n', '').replace('\r', '') : entry for entry in ensembl_root}
+    uniprot_entries_by_seq = {entry.find(UP+'sequence').text.replace('\n', '').replace('\r', '') : entry for entry in uniprot_root}
 
-    #Check for missed SeqVariants in FASTA
-    try:
-        count = 0
-        fasta_dict = SeqIO.index()
-        for entry in ensembl_root:
-            for element in entry:
-                if element.tag == UP+'sequence':
-                    seq = et.tostring(element, encoding='utf8', method='text').replace('\n', '').replace('\r', '')
-                    seq_len = len(seq)
-            for key in fasta_dict:
-                fasta_len = len(fasta_dict[key].seq)
-                #single amino acid case
-                if seq_len == fasta_len:
-                    fasta = indel.seq_to_num(fasta_dict[key].seq)
-                    xml = indel.seq_to_num(seq)
-                    tmp = fasta - xml
-                    if (np.count_nonzero(tmp) == 1):
-                        count += 1
-                        indel.append_seqvar(entry, count, tmp)
-                #insertion deletion case
-                if (np.abs(seq_len-fasta_len) == 1):
-                    result = indel.main(str(fasta_dict[key].seq), seq)
-                    if result != None:
-                        count += 1
-                        indel.append_indel(entry, count, result, seq_len, fasta_len)
-    except Exception, e:
-        print >> sys.stderr, "Sequence variant check failed: %s" % e
+    common_seqs = list(set(ensembl_entries_by_seq) & set(uniprot_entries_by_seq))
+    uniprot_only = list(set(uniprot_entries_by_seq) - set(common_seqs))
+    ensembl_only = list(set(ensembl_entries_by_seq) - set(common_seqs))
+
+    for seq in common_seqs:
+        featureshare.share_all_features(uniprot_entries_by_seq[seq], ensembl_entries_by_seq[seq])
+
+    aa_num_dict = featureshare.aa_num_dict()
+    for i, ensembl_seq in enumerate(ensembl_only):
+        for j, uniprot_seq in enumerate(uniprot_only):
+            if len(ensembl_seq) == len(uniprot_seq):
+                ensembl_num_seq = featureshare.seq_to_num(ensembl_seq, aa_num_dict)
+                uniprot_num_seq = featureshare.seq_to_num(uniprot_seq, aa_num_dict)
+                comparison = uniprot_num_seq - ensembl_num_seq
+                if np.count_nonzero(comparison) == 1:
+                    indel.append_seqvar(ensembl_entries_by_seq[ensembl_seq], j, comparison) # j is a holder for now; planning to remove this...
+            elif np.abs(len(ensembl_seq) - len(uniprot_seq)) == 1:
+                result = indel.main(uniprot_seq, ensembl_seq)
+                indel.append_indel(ensembl_entries_by_seq[ensembl_seq], j, result, len(ensembl_seq), len(uniprot_seq))
 
     #Write the sample specific database to outfile
     if not options.output_fasta: ensembl.write(outFile, pretty_print=True)
