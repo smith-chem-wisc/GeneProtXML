@@ -19,6 +19,23 @@ def share_all_features(e_features, e_featureless):
     for feature in features:
         seq.addprevious(feature)
 
+def share_entry_features(entry, ptm_entry, ptm_positions):
+    mod=[]
+    features = ptm_entry.findall(UP+'feature')
+    seq = entry.find(UP+'sequence')
+    for feature in features:
+        if feature.get('type') != 'modified residue':
+            seq.addprevious(feature)
+        else:
+            for location in feature:
+                for position in location:
+                    if position.get('position') in (ptm_positions):
+                        features.remove(feature)
+                    else:
+                        seq.addprevious(feature)
+
+
+
 def aa_num_dict():
     aa_abbrevs = refparse.aa_abbrev_dict().values()
     return {aa_abbrev : i + 1 for i, aa_abbrev in enumerate(aa_abbrevs)}
