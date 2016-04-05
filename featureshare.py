@@ -20,7 +20,6 @@ def share_all_features(e_features, e_featureless):
         seq.addprevious(feature)
 
 def share_entry_features(entry, ptm_entry, ptm_positions):
-    mod=[]
     features = ptm_entry.findall(UP+'feature')
     seq = entry.find(UP+'sequence')
     for feature in features:
@@ -29,9 +28,7 @@ def share_entry_features(entry, ptm_entry, ptm_positions):
         else:
             for location in feature:
                 for position in location:
-                    if position.get('position') in (ptm_positions):
-                        features.remove(feature)
-                    else:
+                    if int(position.get('position')) not in (ptm_positions):
                         seq.addprevious(feature)
 
 
