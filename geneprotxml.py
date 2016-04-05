@@ -158,11 +158,11 @@ def __main__():
                 ensembl_num_seq = featureshare.seq_to_num(ensembl_seq, aa_num_dict)
                 uniprot_num_seq = featureshare.seq_to_num(uniprot_seq, aa_num_dict)
                 comparison = uniprot_num_seq - ensembl_num_seq
-                if np.count_nonzero(comparison) == 1:
-                    indel.append_seqvar(ensembl_entries_by_seq[ensembl_seq], j, comparison) # j is a holder for now; planning to remove this...
-            elif np.abs(len(ensembl_seq) - len(uniprot_seq)) == 1:
-                result = indel.main(uniprot_seq, ensembl_seq)
-                indel.append_indel(ensembl_entries_by_seq[ensembl_seq], j, result, len(ensembl_seq), len(uniprot_seq))
+                if np.count_nonzero(comparison) <= 3:
+                    indel.append_seqvar(ensembl_entries_by_seq[ensembl_seq], uniprot_only[j], comparison) # j is a holder for now; planning to remove this...
+            elif np.abs(len(ensembl_seq) - len(uniprot_seq)) <= 3:
+                result = indel.get_indel_locations(ensembl_seq,uniprot_seq)
+                indel.append_indel(ensembl_entries_by_seq[ensembl_seq], uniprot_only[j], result)
 
     #Write the sample specific database to outfile
     if not options.output_fasta: ensembl.write(outFile, pretty_print=True)
