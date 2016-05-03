@@ -31,11 +31,9 @@ def share_entry_features(entry, ptm_entry, ptm_positions):
                     if int(position.get('position')) not in (ptm_positions):
                         seq.addprevious(feature)
 
-
-
 def aa_num_dict():
     aa_abbrevs = refparse.aa_abbrev_dict().values()
-    return {aa_abbrev : i + 1 for i, aa_abbrev in enumerate(aa_abbrevs)}
+    return {aa_abbrevs[aa_abbrev] : i + 1 for i, aa_abbrev in enumerate(aa_abbrevs)}
 
 def seq_to_num(seq, aa_num_dict):
     seq_as_numbers = np.zeros((1, len(str(seq))))
