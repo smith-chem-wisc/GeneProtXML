@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GeneProtXml
 {
-    class Individual
+    class IndividualHuman
     {
+        string AMINO_ACIDS = "ACDEFGHIKLMNPQRSTVWY";
     }
 }

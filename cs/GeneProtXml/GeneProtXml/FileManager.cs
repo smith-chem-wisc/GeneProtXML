@@ -9,4 +9,24 @@ namespace GeneProtXml
     class FileManager
     {
     }
+
+    class GtfManager : FileManager
+    {
+
+    }
+
+    class VcfManager : FileManager
+    {
+
+    }
+
+    class FastaManager : FileManager
+    {
+
+    }
+
+    class ProteinXmlManager : FileManager
+    {
+
+    }
 }

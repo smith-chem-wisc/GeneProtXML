@@ -11,7 +11,7 @@ namespace GeneProtXml
     {
         public UserInterfaceCommand()
         {
-            this.IsCommand("user_interface", "Guided console command setup.")
+            this.IsCommand("user_interface", "Guided console command setup.");
         }
 
         public override int Run(string[] remainingArguments)
