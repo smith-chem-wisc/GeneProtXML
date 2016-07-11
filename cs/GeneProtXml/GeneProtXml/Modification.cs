@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeneProtXml
 {
-    public class Exon : ChromosomeSegment
+    public class Modification
     {
-       
     }
 }

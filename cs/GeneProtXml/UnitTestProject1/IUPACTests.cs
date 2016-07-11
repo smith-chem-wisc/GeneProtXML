@@ -4,11 +4,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class IUPACTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ListsContainOnlyCanonicalMonomers()
         {
+            foreach char c in GeneProtXml.Individual
+                Assert.IsTrue
         }
     }
 }

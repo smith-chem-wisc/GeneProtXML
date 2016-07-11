@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneProtXml", "GeneProtXml\GeneProtXml.csproj", "{DEC1FE77-2976-43CA-84FE-4F2B86C5E85F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{F767D765-CE4B-44D1-8D29-C8ACD8312D0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneProtTests", "UnitTestProject1\GeneProtTests.csproj", "{F767D765-CE4B-44D1-8D29-C8ACD8312D0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
