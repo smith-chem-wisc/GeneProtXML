@@ -1,0 +1,1 @@
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineCommandLine\bin\Debug\GeneProtCommandLine.exe.config

@@ -1,0 +1,2 @@
+C:\Users\antho\Documents\GitHub\GeneProtXML\cs\GeneProtXml\GeneProtGUI\bin\Debug\GeneProtGUI.exe.config
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\bin\Debug\GeneProtGUI.exe.config
