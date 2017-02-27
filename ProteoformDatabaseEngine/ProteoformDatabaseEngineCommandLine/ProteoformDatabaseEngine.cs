@@ -9,7 +9,7 @@ namespace ProteoformDatabaseEngine
 {
     class ProteoformDatabaseEngine
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var commands = GetCommands();
             if (args.Length > 0)

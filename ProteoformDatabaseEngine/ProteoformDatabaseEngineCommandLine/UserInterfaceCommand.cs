@@ -20,18 +20,27 @@ namespace ProteoformDatabaseEngine
 
             // USER PROMTS: commands
             List<string> commandList = new List<string> { "help", "generate", "gptmd", "exit" };
-            string commandPrompt = String.Join(Environment.NewLine, ["Choose a command:",
+            string commandPrompt = String.Join(Environment.NewLine, new string[] { "Choose a command:",
                 "help -- Display help menu for commandline arguments",
                 "generate -- Generate a custom protein XML database",
                 "gptmd -- Enter modifications predicted from first-pass GPTMD search results",
-                "exit -- Exit this program"]);
+                "exit -- Exit this program" });
 
             // User prompts: parameters and input files
             List<string> trueFalseList = new List<string> { "T", "t", "True", "true", "TRUE", "F", "f", "False", "false", "FALSE" };
             List<string> trueList = new List<string> { "T", "t", "True", "true", "TRUE" };
             List<string> falseList = new List<string> { "F", "f", "False", "false", "FALSE" };
             string uniprotXmlPrompt = "Please enter the path for a UniProt XML.";
-            string ensemblPepAllPrompt = "Please enter the path for an Ensembl peptide fasta";
+            //string ensemblPepAllPrompt = "Please enter the path for an Ensembl peptide fasta";
+            string methionineOxidationPrompt = "";
+            string carbamPrompt = "";
+            string cleavedNTermMetPrompt = "";
+            string lysineIsotopesPrompt = "";
+            List<string> lysineOptList = new List<string>();
+            string maxPtmsPrompt = "";
+            int maxMaxPtms = 0;
+            string proteoformXmlPrompt = "";
+            string ensemblFaaPrompt = "";
 
             // RUN COMMANDS after prompting and parsing arguments
             string command = GetUserResponse(commandPrompt);
@@ -47,7 +56,7 @@ namespace ProteoformDatabaseEngine
                     bool carbam = trueList.Contains(GetUserResponse(carbamPrompt, trueFalseList));
                     bool cleaved_met = trueList.Contains(GetUserResponse(cleavedNTermMetPrompt, trueFalseList));
                     string lysine_isotopes = GetUserResponse(lysineIsotopesPrompt, lysineOptList);
-                    int maxPtms = GetUserResponse(maxPtmsPrompt, Enumerable.Range(0, DatabaseGenerator.maxMaxPtms).ToList());
+                    int maxPtms = GetUserResponse(maxPtmsPrompt, Enumerable.Range(0, maxMaxPtms).ToList());
 
                     string proteoformXml = GetUserResponse(proteoformXmlPrompt);
                     string uniprotXml = GetUserResponse(uniprotXmlPrompt);

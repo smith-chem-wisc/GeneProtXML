@@ -1,0 +1,17 @@
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Proteogenomics.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Proteogenomics.pdb
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Chemistry.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\MassSpectrometry.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\MathNet.Numerics.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\mzIdentML.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\MzLibUtil.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\MzML.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Proteomics.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Spectra.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Thermo.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\UsefulProteomicsDatabases.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Zlib.Portable.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\MathNet.Numerics.xml
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Zlib.Portable.xml
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\obj\Debug\Proteogenomics.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\obj\Debug\Proteogenomics.pdb

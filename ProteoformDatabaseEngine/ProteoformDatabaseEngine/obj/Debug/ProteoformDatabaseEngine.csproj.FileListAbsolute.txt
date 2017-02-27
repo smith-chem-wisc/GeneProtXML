@@ -1,0 +1,13 @@
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\bin\Debug\ProteoformDatabaseEngine.exe.config
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\bin\Debug\ProteoformDatabaseEngine.exe
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\bin\Debug\ProteoformDatabaseEngine.pdb
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\MainWindow.g.cs
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\App.g.cs
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\ProteoformDatabaseEngine_MarkupCompile.cache
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\ProteoformDatabaseEngine_MarkupCompile.lref
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\MainWindow.baml
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\ProteoformDatabaseEngine.g.resources
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\ProteoformDatabaseEngine.Properties.Resources.resources
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\ProteoformDatabaseEngine.csproj.GenerateResource.Cache
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\ProteoformDatabaseEngine.exe
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngine\obj\Debug\ProteoformDatabaseEngine.pdb
