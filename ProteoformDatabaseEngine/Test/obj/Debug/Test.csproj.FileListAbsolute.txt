@@ -12,12 +12,14 @@ C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\De
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\MzLibUtil.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\MzML.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\nunit.framework.dll
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\Proteogenomics.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\Proteomics.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\Spectra.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\Thermo.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\UsefulProteomicsDatabases.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\Zlib.Portable.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\GenomicsData.pdb
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\Proteogenomics.pdb
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\Genomics.pdb
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\MathNet.Numerics.xml
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Test\bin\Debug\nunit.framework.xml

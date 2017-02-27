@@ -13,5 +13,6 @@ C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenom
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Zlib.Portable.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\MathNet.Numerics.xml
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\bin\Debug\Zlib.Portable.xml
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\obj\Debug\Proteogenomics.csprojResolveAssemblyReference.cache
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\obj\Debug\Proteogenomics.dll
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\Proteogenomics\obj\Debug\Proteogenomics.pdb

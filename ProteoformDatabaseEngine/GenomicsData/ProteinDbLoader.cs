@@ -143,7 +143,7 @@ namespace GenomicsData
                                             break;
 
                                         case "sequence":
-                                            sequence = xml.ReadElementString().Replace("\n", null);
+                                            sequence = xml.ReadElementString().Replace("\n", null).Replace(" ", null);
                                             break;
                                     }
                                     break;

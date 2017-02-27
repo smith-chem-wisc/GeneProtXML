@@ -17,5 +17,6 @@ C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformD
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineCommandLine\bin\Debug\ManyConsole.pdb
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineCommandLine\bin\Debug\MathNet.Numerics.xml
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineCommandLine\bin\Debug\Zlib.Portable.xml
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineCommandLine\obj\Debug\ProteoformDatabaseEngineCommandLine.csprojResolveAssemblyReference.cache
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineCommandLine\obj\Debug\ProteoformDatabaseEngineCommandLine.exe
 C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineCommandLine\obj\Debug\ProteoformDatabaseEngineCommandLine.pdb
