@@ -1,0 +1,2 @@
+C:\Users\Anthony\Documents\GitHub\GeneProtXML\cs\GeneProtXml\GeneProtXml\bin\x64\Debug\GeneProtXml.exe.config
+C:\Users\antho\Documents\GitHub\GeneProtXML\cs\GeneProtXml\GeneProtXml\bin\x64\Debug\GeneProtXml.exe.config

@@ -1,0 +1,10 @@
+C:\Users\antho\Documents\GitHub\GeneProtXML\cs\GeneProtXml\GeneProtGUI\bin\Debug\GeneProtGUI.exe.config
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\bin\Debug\ProteoformDatabaseEngineGUI.exe.config
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\bin\Debug\ProteoformDatabaseEngineGUI.exe
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\bin\Debug\ProteoformDatabaseEngineGUI.pdb
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\obj\Debug\ProteoformDatabaseEngineGUI.csprojResolveAssemblyReference.cache
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\obj\Debug\ProteoformDatabaseEngineGUI.Properties.Resources.resources
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\obj\Debug\GeneProtGUI.ProteoformDatabaseEngine.resources
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\obj\Debug\ProteoformDatabaseEngineGUI.csproj.GenerateResource.Cache
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\obj\Debug\ProteoformDatabaseEngineGUI.exe
+C:\Users\antho\Documents\GitHub\GeneProtXML\ProteoformDatabaseEngine\ProteoformDatabaseEngineGUI\obj\Debug\ProteoformDatabaseEngineGUI.pdb

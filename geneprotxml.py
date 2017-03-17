@@ -29,9 +29,10 @@ def __main__():
     parser.add_option( '-p', '--protein_fasta', dest='protein_fasta', help='Reference protein FASTA file. Used to generate SAV peptide entries. If no UniProt-XML is specified, SAV and NSJ entries will be appended to this database to generate an output database. By default, this output will be a UniProt-XML protein database without PTM annotations. If --output-fasta is selected, the output will be a protein FASTA.')
     parser.add_option( '-g', '--gene_model', dest='gene_model', default=None, help='GTF gene model file. Used to annotate NSJ peptide entries.')
     parser.add_option( '-v', '--snpeff_vcf', dest='snpeff_vcf', help='SnpEff VCF file with HGVS annotations (else read from stdin).' )
+    parser.add_option( '-c', '--cufflinks_bed', dest='cufflinks_bed', help='Reconstructed transcripts in bed format.' )
     parser.add_option( '-b', '--splice_bed', dest='splice_bed', help='BED file (tophat junctions.bed) with sequence column added.' )
-    parser.add_option( '-o', '--output', dest='output', help='Output file path. Outputs UniProt-XML format unless --output-fasta is selected.' )
-    parser.add_option( '-z', '--output_fasta', dest='output_fasta', action='store_true', default=False, help='Output a FASTA-format database. Place path for output file after the --output flag.')
+    parser.add_option( '-o', '--output', dest='output', help='Output file path. Outputs UniProt-XML and FASTA format databases.' )
+    # parser.add_option( '-z', '--output_fasta', dest='output_fasta', action='store_true', default=False, help='Output a FASTA-format database. Place path for output file after the --output flag.')
     # parser.add_option( '-m', '--threads', dest='threads', type='int', default=)
       #Peptide sequence construction
     parser.add_option( '-l', '--leading_aa_num', dest='leading_aa_num', type='int', default=33, help='Leading number of AAs to output for SAV peptides. Default: 33.' )
@@ -87,12 +88,13 @@ def __main__():
         print >> sys.stderr, "failed: no Ensembl reference protein database specified"
 
     ##OUTPUT##
-    outFile = None
-    if options.output == None: outFile = sys.stdout
+    outXml, outFasta = None, None
+    if options.output == None: outXml = sys.stdout
     else:
         try:
-            outFile = os.path.abspath(options.output)
-            outFile = open(outFile, 'w')
+            outBasename = os.path.basename(options.output)
+            outXml = open(outBasename + '.xml', 'w')
+            outFasta = open(outBasename + '.fasta', 'w')
         except Exception, e:
             print >> sys.stderr, "Opening outfile failed: %s" % e
             exit(3)
@@ -141,8 +143,8 @@ def __main__():
 
     #Enter PTM information from uniprot into the EnsemblXML
     uniprot_root.remove(uniprot_root.find(UP+'copyright'))
-    ensembl_entries_by_seq = {entry.find(UP+'sequence').text.replace('\n', '').replace('\r', '') : entry for entry in ensembl_root}
-    uniprot_entries_by_seq = {entry.find(UP+'sequence').text.replace('\n', '').replace('\r', '') : entry for entry in uniprot_root}
+    ensembl_entries_by_seq = {entry.find(UP+'sequence').text.replace('\n', '').replace('\r', ''): entry for entry in ensembl_root}
+    uniprot_entries_by_seq = {entry.find(UP+'sequence').text.replace('\n', '').replace('\r', ''): entry for entry in uniprot_root}
 
     common_seqs = list(set(ensembl_entries_by_seq) & set(uniprot_entries_by_seq))
     uniprot_only = list(set(uniprot_entries_by_seq) - set(common_seqs))
@@ -161,21 +163,21 @@ def __main__():
                 if np.count_nonzero(comparison) <= 3:
                     indel.append_seqvar(ensembl_entries_by_seq[ensembl_seq], uniprot_only[j], comparison) # j is a holder for now; planning to remove this...
             elif np.abs(len(ensembl_seq) - len(uniprot_seq)) <= 3:
-                result = indel.get_indel_locations(ensembl_seq,uniprot_seq)
+                result = indel.get_indel_locations(ensembl_seq, uniprot_seq)
                 indel.append_indel(ensembl_entries_by_seq[ensembl_seq], uniprot_only[j], result)
 
-    #Write the sample specific database to outfile
-    if not options.output_fasta: ensembl.write(outFile, pretty_print=True)
-    else:
-        entryct = len(ensembl_root)
-        if outFile != None:
-            for i, entry in enumerate(ensembl_root):
-                if i % 1000 == 0: print "writing entry " + str(i) + " of " + str(entryct)
-                entry = refparse.xml_to_fasta(entry)
-                if entry == None: continue
-                else: outFile.write(entry[0] + '\n' + entry[1] + '\n')
-            outFile.close()
-        else: print >> sys.stderr, "Writing to fasta failed: no out-file found"
+    #Write the sample-specific xml to outfile
+    ensembl.write(outXml, pretty_print=True)
+
+    #Write the sample-specific fasta to outfile
+    entryct = len(ensembl_root)
+    if outFasta != None:
+        for i, entry in enumerate(ensembl_root):
+            if i % 1000 == 0: print "writing entry " + str(i) + " of " + str(entryct)
+            entry = refparse.xml_to_fasta(entry)
+            if entry == None: continue
+            else: outFasta.write(entry[0] + '\n' + entry[1] + '\n')
+        outXml.close()
+    else: print >> sys.stderr, "Writing to fasta failed: no out-file found"
 
 if __name__ == "__main__" : __main__()
-

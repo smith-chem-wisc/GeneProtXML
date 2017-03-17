@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<uniprot>
+  <entry>
+    <accession>P53863</accession>
+    <name>JJJ1_YEAST</name>
+    <protein>
+      <recommendedName>
+        <fullName>J protein JJJ1</fullName>
+      </recommendedName>
+    </protein>
+    <feature type="chain">
+      <location>
+        <begin position="1" />
+        <end position="590" />
+      </location>
+    </feature>
+    <feature type="modified residue" description="Phosphoserine">
+      <location>
+        <position position="393" />
+      </location>
+    </feature>
+    <feature type="modified residue" description="Phosphothreonine">
+      <location>
+        <position position="504" />
+      </location>
+    </feature>
+    <sequence length="590">MKTCYYELLGVETHASDLELKKAYRKKALQYHPDKNPDNVEEATQKFAVIRAAYEVLSDPQERAWYDSHKEQILNDTPPSTDDYYDYEVDATVTGVTTDELLLFFNSALYTKIDNSAAGIYQIAGKIFAKLAKDEILSGKRLGKFSEYQDDVFEQDINSIGYLKACDNFINKTDKLLYPLFGYSPTDYEYLKHFYKTWSAFNTLKSFSWKDEYMYSKNYDRRTKREVNRRNEKARQQARNEYNKTVKRFVVFIKKLDKRMKEGAKIAEEQRKLKEQQRKNELNNRRKFGNDNNDEEKFHLQSWQTVKEENWDELEKVYDNFGEFENSKNDKEGEVLIYECFICNKTFKSEKQLKNHINTKLHKKNMEEIRKEMEEENITLGLDNLSDLEKFDSADESVKEKEDIDLQALQAELAEIERKLAESSSEDESEDDNLNIEMDIEVEDVSSDENVHVNTKNKKKRKKKKKAKVDTETEESESFDDTKDKRSNELDDLLASLGDKGLQTDDDEDWSTKAKKKKGKQPKKNSKSTKSTPSLSTLPSSMSPTSAIEVCTTCGESFDSRNKLFNHVKIAGHAAVKNVVKRKKVKTKRI</sequence>
+  </entry>
+  <entry>
+    <accession>P07170</accession>
+    <name>KAD2_YEAST</name>
+    <protein>
+      <recommendedName>
+        <fullName>Adenylate kinase</fullName>
+      </recommendedName>
+    </protein>
+    <feature type="propeptide">
+      <location>
+        <begin position="" />
+        <end position="" />
+      </location>
+    </feature>
+    <feature type="chain">
+      <location>
+        <begin position="3" />
+        <end position="222" />
+      </location>
+    </feature>
+    <feature type="modified residue" description="N-acetylserine">
+      <location>
+        <position position="2" />
+      </location>
+    </feature>
+    <feature type="modified residue" description="N-acetylserine">
+      <location>
+        <position position="3" />
+      </location>
+    </feature>
+    <sequence length="222">MSSSESIRMVLIGPPGAGKGTQAPNLQERFHAAHLATGDMLRSQIAKGTQLGLEAKKIMDQGGLVSDDIMVNMIKDELTNNPACKNGFILDGFPRTIPQAEKLDQMLKEQGTPLEKAIELKVDDELLVARITGRLIHPASGRSYHKIFNPPKEDMKDDVTGEALVQRSDDNADALKKRLAAYHAQTEPIVDFYKKTGIWAGVDASQPPATVWADILNKLGKD</sequence>
+  </entry>
+</uniprot>

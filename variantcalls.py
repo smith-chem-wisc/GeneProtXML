@@ -112,7 +112,7 @@ def parse_vcf_line(root, line, protein_fasta, snvDepthCut, minPepLength, leading
                 if key == 'EFF':
                     for effect in val.split(','):
                         (eff, effs) = effect.rstrip(')').split('(')                                
-                        if eff not in ['NON_SYNONYMOUS_CODING','MISSENSE','missense_variant']: continue #updated for snpeff.4.0 with the inclusion of MISSENSE
+                        if eff not in ['NON_SYNONYMOUS_CODING', 'MISSENSE', 'missense_variant']: continue #updated for snpeff.4.0 with the inclusion of MISSENSE
                         (impact, functional_class, codon_change, aa_change, aa_len, gene_name, biotype, coding, transcript, exon) = effs.split('|')[0:10]
                         if transcript:
                             aa_pos, ref_aa, alt_aa = parse_aa_change(aa_change)
